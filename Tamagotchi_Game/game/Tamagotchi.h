@@ -43,8 +43,7 @@ public:
 			data.push_back(std::to_string(weight));
 			data.push_back(std::to_string(height));
 			data.push_back(std::to_string(level));
-			data.push_back(std::to_string(exp));
-			data.push_back(std::to_string(expNext));
+			data.push_back(std::to_string(exp) + " // " + std::to_string(expNext));
 			return data;
 		}
 		void setName(const std::string& n) {
