@@ -13,7 +13,6 @@
 
 class Tamagotchi
 {
-private:
 	std::string name;
 	int age;
 	int health;
@@ -33,18 +32,19 @@ private:
 public:
 		std::vector<std::string> getAllData() const {
 			std::vector<std::string> data;
-			data.push_back("Имя: " + this->name);
-			data.push_back("Возраст: " + std::to_string(age));
-			data.push_back("Здоровье: " + std::to_string(health));
-			data.push_back("Голод: " + std::to_string(hunger));
-			data.push_back("Настроение: " + std::to_string(mood));
-			data.push_back("Сон: " + std::to_string(sleep));
-			data.push_back("Чистота: " + std::to_string(clean));
-			data.push_back("Энергия: " + std::to_string(energy));
-			data.push_back("Вес: " + std::to_string(weight));
-			data.push_back("Рост: " + std::to_string(height));
-			data.push_back("Уровень: " + std::to_string(level));
-			data.push_back("Опыт: " + std::to_string(exp) + " // " + std::to_string(expNext));
+			data.push_back(this->name);
+			data.push_back(std::to_string(age));
+			data.push_back(std::to_string(health));
+			data.push_back(std::to_string(hunger));
+			data.push_back(std::to_string(mood));
+			data.push_back(std::to_string(sleep));
+			data.push_back(std::to_string(clean));
+			data.push_back(std::to_string(energy));
+			data.push_back(std::to_string(weight));
+			data.push_back(std::to_string(height));
+			data.push_back(std::to_string(level));
+			data.push_back(std::to_string(exp));
+			data.push_back(std::to_string(expNext));
 			return data;
 		}
 		void setName(const std::string& n) {
@@ -103,7 +103,7 @@ public:
 			expNext = en;
 		}
 
-		void default()
+		void set_default()
 		{
 			this->setAge(0);
 			this->setLevel(1);

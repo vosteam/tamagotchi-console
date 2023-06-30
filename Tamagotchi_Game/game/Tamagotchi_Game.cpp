@@ -121,9 +121,24 @@ void infoTamagochi()
 {
 	auto tamagotchi = tama.getAllData();
 	clearScreen();
-	for (const auto& item : tamagotchi)
+	std::vector<std::string> arr;
+	arr = {
+		"Имя: ",
+		"Возраст: ",
+		"Здоровье: ",
+		"Голод: ",
+		"Настроение: ",
+		"Сон: ",
+		"Чистота: ",
+		"Энергия: ",
+		"Вес: ",
+		"Рост: ",
+		"Уровень: ",
+		"Опыт: "
+	};
+	for (int i=0; i<tamagotchi.size(); i++)
 	{
-		printlnText(item);
+		printlnText(arr.at(i) + tamagotchi.at(i));
 	}
 	printlnText("Вернуться в меню", 100, 0, 4);
 	cin.get();
@@ -137,7 +152,7 @@ void new_game()
 	std::cin >> name;
 
 	tama.setName(name);
-	tama.default();
+	tama.set_default();
 	tama.save_game();
 }
 
@@ -147,17 +162,18 @@ int main() {
 	SetConsoleTitle("Tamagotchi");
 	auto hConsole = GetConsoleWindow();
 	SetConsoleTextAttribute(hConsole, 7);
+	std::string homedrive = getenv("HOMEDRIVE");
+	std::string homepath = getenv("HOMEPATH");
+	std::string folder_path = homedrive + homepath + "\\Documents\\vos.team\\Tamagotchi\\";
 
 	int choice;
 	do
 	{
-		std::string homedrive = getenv("HOMEDRIVE");
-		std::string homepath = getenv("HOMEPATH");
-		std::string folder_path = homedrive + homepath + "\\Documents\\vos.team\\Tamagotchi\\";
 		auto files = utils::get_files(folder_path);
 		menu();
 		cin >> choice;
 		std::string load;
+		
 		switch (choice)
 		{
 		case 1:
@@ -166,9 +182,9 @@ int main() {
 			goto MAIN;
 			break;
 		case 2:
-			
 			for (auto& item : files)
 				printlnText(item);
+			printlnText("Напишите имя сохранения");
 			std::cin >> load;
 			tama.load_game(load);
 			printlnText("Игра загружена", 100, 0, 4);
